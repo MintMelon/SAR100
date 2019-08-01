@@ -66,6 +66,13 @@ def shape_selection(event, x, y, flags, param):
 				print("point is inside contour")
 				cv2.drawContours(image, contour, -1, (0, 255, 0), 3)
 
+				# Centre Calculation
+				M = cv2.moments(contour)
+				cx = int(M['m10']/M['m00'])
+				cy = int(M['m01']/M['m00'])
+				centre = (cx, cy)
+				print(centre)
+
 		cv2.imshow("Image", image)
 
      
