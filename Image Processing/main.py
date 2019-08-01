@@ -73,6 +73,13 @@ def shape_selection(event, x, y, flags, param):
 				centre = (cx, cy)
 				print(centre)
 
+				# Saving Image
+				a, b, w, h = cv2.boundingRect(contour)
+				if w > 50 and h > 50:
+					idx+=1
+					new_img = image_1[b:b+h, a:a+w]
+					cv2.imwrite(str(idx) + '.png', new_img)
+
 		cv2.imshow("Image", image)
 
      
